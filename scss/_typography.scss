@@ -1,3 +1,5 @@
+@use "variables";
+
 :root { 
   font-size: 16px; 
   --base-font-size: 1rem; 
@@ -15,11 +17,11 @@
 	--sub-size: calc(var(--base-font-size) / var(--scale));
   --super-size: calc(var(--h1-size) * var(--scale));
 
-	@include for-tablet-landscape-up {
+	@include variables.for-tablet-landscape-up {
 		--scale: 1.200;
 	}
 
-	@include for-big-desktop-up {
+	@include variables.for-big-desktop-up {
 		--base-font-size: 1.125rem;
 	}
 

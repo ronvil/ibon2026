@@ -1,39 +1,4 @@
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
-
-  <script src="js/vendor/sidr.min.js"></script>
-  <link rel="stylesheet" href="css/sidr.bare.min.css">
-
-  <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-
-  <!-- Add your site or application content here -->
-
-  <div id="sidr">
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus nulla labore facilis, eligendi optio modi dicta. Architecto in culpa fugit dolores quod, non nesciunt saepe eveniet, impedit omnis assumenda dolorem.</p>    
-  </div>
-
-  <header class="banner" role="banner">
-
-    <div class="container">
-      <a id="menu-toggle" href="#sidr" class="menu-toggle"><i class="fas fa-bars"></i></a>
-    </div>
-
-  </header>
+<?php get_header(); ?>
 
   <main>
     <div class="container">
@@ -41,44 +6,4 @@
     </div>
   </main>
 
-  <footer role="contentinfo">
-
-  </footer>
-
-
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <script>
-      (function(sidr) {
-        "use strict"
-
-        sidr.new('#menu-toggle', {
-          timing: 'ease-in-out',
-          speed: 500,
-          side: 'right',
-          onOpen: function() {
-            document.getElementById("menu-toggle").innerHTML = "<i class='fas fa-times'></i>";
-          },
-          onClose: function() {
-            document.getElementById("menu-toggle").innerHTML = "<i class='fas fa-bars'></i>";
-          },
-        });
-
-        window.onresize = function() {
-          sidr.close('sidr');
-        };
-
-      })(window.sidr);
-    </script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>
+<?php get_footer( ); ?>

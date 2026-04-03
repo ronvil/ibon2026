@@ -1,21 +1,21 @@
-@import "normalize";
-@import "main";
-@import "variables";
-@import "typography";
+@use "normalize";
+@use "main";
+@use "variables";
+@use "typography";
 
 .container {
 	margin: 0 auto;
 	padding: 1rem;
-	@include for-tablet-portrait-up {
+	@include variables.for-tablet-portrait-up {
 		max-width: 704px;
 	}
-	@include for-tablet-landscape-up {
+	@include variables.for-tablet-landscape-up {
 		max-width: 948px;
 	}
-	@include for-desktop-up {
+	@include variables.for-desktop-up {
 		max-width: 1248px;
 	}
-	@include for-big-desktop-up {
+	@include variables.for-big-desktop-up {
 		max-width: 1600px;
 	}
 }

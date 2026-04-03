@@ -23,6 +23,7 @@
   <header class="banner" role="banner">
 
     <div class="container">
+      <a id="menu-toggle" href="#sidr" class="menu-toggle"><i class="fas fa-bars"></i></a>
     </div> 
 
   </header>
