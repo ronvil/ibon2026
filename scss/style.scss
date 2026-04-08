@@ -2,6 +2,7 @@
 @use "main";
 @use "variables";
 @use "typography";
+@use "sass:color";
 
 .container {
 	margin: 0 auto;
@@ -24,5 +25,404 @@ nav {
 	ul {
 		list-style: none;
 		padding: 0;
+	}
+}
+
+.banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	background: #fff;
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&--scrolled {
+		transform: translateY(0);
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		@include variables.for-desktop-up {
+			.mainlogo {
+				a {
+					width: 60px;
+				}
+			}
+		}
+	}
+}
+
+.mainlogo {
+	a {
+		display: inline-block;
+		width: 40px;
+	}
+	img {
+		max-width: 100%;
+	}
+	@include variables.for-tablet-landscape-up {
+		a {
+			width: 70px;
+		}
+	}
+	@include variables.for-desktop-up {
+		a {
+			width: 100px;
+		}
+	}
+}
+
+.bannermenu {
+	display: none;
+	@include variables.for-desktop-up {
+		display: block;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+		padding: .5rem 1rem;
+		color: variables.$orange;
+		@include variables.transition;
+		@include variables.borderradius;
+		&:hover {
+			background: variables.$orange;
+			color: #fff;
+		}
+	}
+	ul {
+		display: flex;
+		text-transform: uppercase;
+		padding: 0;
+		margin: 0;
+		@include typography.mona-sans-bold;
+		li {
+			position: relative;
+			ul {
+				position: absolute;
+				flex-direction: column;
+				width: max-content;
+				@include typography.sub-size;
+				max-height: 0;
+				overflow: hidden;
+				opacity: 0;
+				transition: max-height 0.4s ease, opacity 0.3s ease;
+				background: #fff;
+				a {
+					padding: .5rem;
+				}
+			}
+			&:hover {
+				ul {
+					max-height: max-content;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.menu-toggle {
+	@include variables.for-tablet-landscape-up {
+		display: none;
+	}
+}
+
+.search-toggle {
+	display: none;
+}
+
+main {
+	padding-top: 46px;
+	@include variables.for-tablet-landscape-up {
+		padding-top: 68px;
+	}
+	@include variables.for-desktop-up {
+		padding-top: 90px;
+	}
+}
+
+.home {
+	&__section {
+		padding: 2rem 0;
+	}
+	&__sectiontitle {
+		text-transform: uppercase;
+		@include typography.h6-size;
+		margin-top: 0;
+		a {
+			text-decoration: none;
+			color: variables.$teal;
+		}
+	}
+}
+
+
+
+.hero {
+	img {
+		max-width: 100%;
+	}
+	&__container {
+		display: grid;
+		gap:1rem;
+	}
+	&__thumb {
+		order: 1;
+		@include variables.borderradius;
+	}
+	&__content {
+		order: 2;
+	}
+	&__catcontainer {
+		a {
+			@include typography.catbutton;
+		}
+	}
+	h1 {
+		@include typography.h3-size;
+		a {
+			color: variables.$orange;
+			text-decoration: none;
+		}
+	}
+	@include variables.for-tablet-landscape-up {
+		&__container {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		&__thumb {
+			order: 2;
+			grid-column: span 2;
+		}
+		&__content {
+			order: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+
+	}
+}
+
+.vitalsigns {
+	&__cardcontainer {
+		display: grid;
+		gap: .25rem;
+		grid-template-columns: repeat(2, 1fr);
+		@include variables.for-tablet-landscape-up {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@include variables.for-desktop-up {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+	&__card {
+		@include variables.borderradius;
+		border: 1px solid variables.$orange;;
+		a {
+			display: inline-block;
+			text-decoration: none;
+			color: #fff;
+			background: variables.$orange;
+		}
+		img {
+			max-width: 100%;
+		}
+		h2 {
+			@include typography.sub-size;
+			@include typography.mona-sans-roman;
+			margin: .5rem;
+		}
+	}
+}
+
+.burningissues {
+	background: color.adjust(#fff, $lightness: -5%);
+	&__cardcontainer {
+		display: grid;
+		gap: 1rem;
+		@include variables.for-tablet-portrait-up {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@include variables.for-tablet-landscape-up {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	&__card {
+		@include variables.borderradius;
+		padding: 1rem;
+		background: #fff;
+	}
+	&__tagcontainer {
+		margin-bottom: .5rem;
+		a {
+			@include typography.catbutton;
+		}
+	}
+	&__thumb {
+		@include variables.borderradius;
+		img {
+			max-width: 100%;
+		}
+	}
+	&__text {
+		h2 {
+			@include typography.h6-size;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.gridcontainer {
+	display: grid;
+	gap: 2rem;
+	@include variables.for-tablet-landscape-up {
+		grid-template-columns: 2fr 1fr;
+	}
+	@include variables.for-desktop-up {
+		grid-template-columns: 3fr 1fr;
+	}
+	&__main {
+		display: grid;
+		gap: 2rem;
+	}
+}
+
+.homecontent {
+	&__container {
+		display: grid;
+		gap: 1rem;
+		@include variables.for-desktop-up {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+
+.articlecard {
+	@include variables.borderradius;
+	border: 1px solid variables.$orange;
+	padding: 1rem;
+	display: grid;
+	gap: 1rem;
+	&__cat {
+		a {
+			@include typography.catbutton;
+		}
+	}
+	&__thumb {
+		@include variables.borderradius;
+		img {
+			max-width: 100%;
+		}
+	}
+	&__text {
+		h2 {
+			@include typography.h6-size;
+			a {
+				color: variables.$orange;
+				text-decoration: none;
+			}
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.homegraphics {
+	&__container {
+		display: grid;
+		gap: 1rem;
+		@include variables.for-tablet-landscape-up {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
+
+.graphicscard {
+	@include variables.borderradius;
+	border: 1px solid variables.$orange;
+	img {
+		max-width: 100%;
+	}
+}
+
+.photoquote {
+	&__container {
+		@include variables.borderradius;
+		position: relative;
+	}
+	&__thumb {
+		position: relative;
+		z-index: 1;
+		img {
+			max-width: 100%;
+		}
+	}
+	&__content {
+		position: absolute;
+		z-index: 3;
+		bottom: 0;
+		width: 100%;
+		color: #fff;
+		.wp-block-pullquote {
+			margin: 0;
+			padding: 0;
+		}
+		blockquote {
+			font-size: 1rem;
+			padding: 15rem 1rem 1rem;
+			background: #FF5311;
+			background: linear-gradient(0deg, rgba(226, 83, 17, 1) 36%, rgba(226, 83, 17, 0.5) 86%, rgba(226, 83, 17, 0) 96%);
+		}
+	}
+	@include variables.for-tablet-portrait-up {
+		&__container {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+		}
+		&__thumb {
+			position: relative;
+			z-index: 1;
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				width: 100%;
+				top: 0;
+				bottom: 0;
+				background: #E25311;
+				background: linear-gradient(280deg, rgba(226, 83, 17, 1) 0%, rgba(226, 83, 17, 0.5) 60%, rgba(226, 83, 17, 0) 94%);
+				z-index: 2;
+			}
+		}
+		&__content {
+			position: relative;
+			.wp-block-pullquote {
+				height: 100%;
+				display: flex;
+				align-items: center;
+				background: variables.$orange;
+			}
+			blockquote {
+				padding: 1rem;
+				background: variables.$orange;
+			}
+		}
+	}
+}
+
+.publications {
+	background: variables.$darkteal;
+	color: #fff;
+}
+
+.publicationscard {
+	a {
+		display: inline-block;
+	}
+	img {
+		max-width: 100%;
 	}
 }

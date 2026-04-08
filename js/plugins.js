@@ -44,3 +44,25 @@
   };
 
 })(window.sidr);
+
+// Lightbox
+const lightbox = GLightbox({
+    selector: '.vitalsigns__gallery',
+    touchNavigation: true
+});
+
+
+// Swiper
+const swiper = new Swiper('.swiper', {
+
+  slidesPerView: 5,
+  spaceBetween: 10,
+  
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+
+});

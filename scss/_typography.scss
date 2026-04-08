@@ -1,5 +1,41 @@
 @use "variables";
 
+@mixin mona-sans-roman {
+  font-family: "Mona Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+@mixin mona-sans-italic {
+  font-family: "Mona Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+@mixin mona-sans-bold {
+  font-family: "Mona Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+@mixin mona-sans-bold-italic {
+  font-family: "Mona Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  font-variation-settings:
+    "wdth" 100;
+}
+
 :root { 
   font-size: 16px; 
   --base-font-size: 1rem; 
@@ -66,14 +102,16 @@
 }
 
 body {
-	color: #333;
+	color: variables.$graphite;
   font-size: var(--p-size); 
   line-height: 1.5;
+  @include mona-sans-roman;
 }
 
 h6, h5, h4, h3, h2, h1 { 
   font-weight: bold;
   margin: 1rem 0;
+  @include mona-sans-bold;
 }
 
 h6 { 
@@ -100,6 +138,10 @@ h1 {
   @include h1-size;
 }
 
+@mixin p-size {
+  font-size: 1rem;
+}
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
   border: 0;
@@ -112,4 +154,19 @@ h1 {
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
+}
+
+@mixin catbutton {
+  @include variables.borderradius;
+  background: variables.$teal;
+  text-decoration: none;
+  padding: .25rem .5rem;
+  @include sub-size;
+  color: #fff;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+a {
+  text-decoration-thickness: 1px;
 }

@@ -1,5 +1,16 @@
+$orange: rgb(226, 83, 17);
+$teal: rgb(23, 126, 137);
+$darkteal: rgb(8, 76, 97);
+$yellow: rgb(255, 200, 87);
+$graphite: rgb(50, 48, 49);
+
 @mixin transition {
   transition: all .3s;
+}
+
+@mixin borderradius {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 @mixin for-phone-only {
