@@ -169,4 +169,72 @@ h1 {
 
 a {
   text-decoration-thickness: 1px;
+  color: variables.$orange;
+}
+
+@mixin screen {
+  a {
+    display: inline-block;
+    @include variables.transition;
+    position: relative;
+    img {
+      position: relative;
+      z-index: 1;
+      @include variables.transition;
+    }
+    &::after {
+      content: "Read More >>>";
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      color: #fff;
+      background: rgba($color: variables.$orange, $alpha: .5);
+      left: 0;
+      opacity: 0;
+      @include variables.transition;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 1rem 1rem .5rem;
+      @include mona-sans-bold;
+      @include h6-size;
+      text-transform: uppercase;
+    }
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@mixin graphicscard {
+  padding: 1rem .5rem;
+		a {
+			@include variables.borderradius;
+			border: 1px solid variables.$orange;
+			display: inline-block;
+			text-decoration: none;
+			color: #fff;
+			background: variables.$orange;
+			@include variables.transition;
+			img {
+				@include variables.transition;
+			}
+			&:hover {
+				box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+				transform: scale(1.05);
+				img {
+					opacity: .2;
+				}
+			}
+		}
+		img {
+			max-width: 100%;
+		}
 }

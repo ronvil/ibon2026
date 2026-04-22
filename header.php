@@ -5,7 +5,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+  <script src="https://kit.fontawesome.com/1cda5f9732.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -22,8 +22,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-  <div hidden>
-    <!-- svg sprite here -->
+  <div class="lightboxsearch" id="lightboxsearch" style="display: none;">
+    <?php get_search_form(); ?>
   </div>
 
   <div id="sidr">
@@ -52,7 +52,7 @@
 
         <a id="menu-toggle" href="#sidr" class="menu-toggle"><i class="fas fa-bars"></i></a>
 
-        <a id="search-toggle" href="#sidr" class="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a id="search-toggle" href="#lightboxsearch" class="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></a>
 
       </nav>
 

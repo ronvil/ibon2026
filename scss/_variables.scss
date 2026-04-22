@@ -1,8 +1,42 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+
 $orange: rgb(226, 83, 17);
 $teal: rgb(23, 126, 137);
 $darkteal: rgb(8, 76, 97);
 $yellow: rgb(255, 200, 87);
 $graphite: rgb(50, 48, 49);
+
+@mixin scrim-gradient(
+  $color,
+  $direction: to bottom,
+  $stops: (
+    0%: 1,
+    20%: 0.74,
+    35%: 0.54,
+    50%: 0.38,
+    65%: 0.26,
+    75%: 0.16,
+    85%: 0.08,
+    92%: 0.04,
+    97%: 0.015,
+    100%: 0
+  )
+) {
+  $gradient-stops: ();
+
+  @each $pos, $alpha in $stops {
+    $stop-color: color.change($color, $alpha: $alpha);
+    $gradient-stops: list.append(
+      $gradient-stops,
+      #{$stop-color} #{$pos},
+      comma
+    );
+  }
+
+  background: linear-gradient(#{$direction}, $gradient-stops);
+}
 
 @mixin transition {
   transition: all .3s;

@@ -54,9 +54,13 @@ function remove_image_size_attributes( $html ) {
 	add_filter( 'image_send_to_editor', 'remove_image_size_attributes' );
 
 
+add_filter('wp_img_tag_add_auto_sizes', '__return_false');
+
+
 // nav menus
 register_nav_menus( array(
-	'mainmenu'   => __( 'Main menu for top and footer' ),
+	'mainmenu'   => __( 'Main menu' ),
+	'footermenu'   => __( 'Footer menu' ),
 ) );
 
 
@@ -176,6 +180,42 @@ function insert_fb_in_head() {
 	";
 	}
 	add_action( 'wp_head', 'insert_fb_in_head', 5 );
+
+
+// Related Posts
+
+function get_related_posts_by_tags($post_id = null, $args = array()) {
+
+    $post_id = $post_id ?: get_the_ID();
+
+    // Default query args
+    $defaults = array(
+        'posts_per_page'      => 3,
+        'ignore_sticky_posts' => 1,
+        'orderby'             => 'date',
+    );
+
+    // Merge custom args
+    $args = wp_parse_args($args, $defaults);
+
+    // Get tags
+    $tags = wp_get_post_tags($post_id);
+
+    if (!$tags) {
+        return false;
+    }
+
+    // Extract tag IDs
+    $tag_ids = wp_list_pluck($tags, 'term_id');
+
+    // Final query args
+    $query_args = array_merge($args, array(
+        'tag__in'      => $tag_ids,
+        'post__not_in' => array($post_id),
+    ));
+
+    return new WP_Query($query_args);
+}
 
 
 //Enqueue Scripts

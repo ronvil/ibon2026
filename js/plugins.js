@@ -55,8 +55,23 @@ const lightbox = GLightbox({
 // Swiper
 const swiper = new Swiper('.swiper', {
 
-  slidesPerView: 5,
-  spaceBetween: 10,
+  slidesPerView: 1.25,
+  spaceBetween: 1,
+
+  breakpoints: {
+    // when window width is >= 320px
+    736: {
+      slidesPerView: 2.25
+    },
+    // when window width is >= 480px
+    980: {
+      slidesPerView: 4.25
+    },
+    // when window width is >= 640px
+    1280: {
+      slidesPerView: 5.25
+    }
+  },
   
   // Navigation arrows
   navigation: {
@@ -64,5 +79,11 @@ const swiper = new Swiper('.swiper', {
     prevEl: '.swiper-button-prev',
   },
 
+});
 
+//lightbox 
+const searchlightbox = GLightbox ({
+  selector: '.search-toggle',
+  height: 'auto',
+  skin: 'lightboxsearch',
 });
